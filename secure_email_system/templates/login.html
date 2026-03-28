@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login | CipherMail</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/login.css') }}"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="logo">🔐 <span>CipherMail</span></div>
+
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/register" class="btn-outline">Register</a></li>
+      </ul>
+    </nav>
+
+    <!-- LOGIN SECTION -->
+    <section class="login-section">
+      <div class="login-container">
+        <div class="login-left">
+          <h2>Welcome Back</h2>
+          <p>
+            Access your encrypted inbox and experience secure communication
+            powered by Hybrid Cryptography.
+          </p>
+
+          <div class="security-points">
+            <div>🔐 End-to-End Encryption</div>
+            <div>🛡 Digital Signature Verification</div>
+            <div>⚡ AES-256 + RSA-2048</div>
+          </div>
+        </div>
+
+        <div class="login-card">
+          <h3>Sign In</h3>
+
+          {% if error %}
+          <div class="error-box">{{ error }}</div>
+          {% endif %}
+
+          <form method="POST" action="/login">
+            <div class="input-group">
+              <label>Username</label>
+              <input type="text" name="username" required />
+            </div>
+
+            <div class="input-group">
+              <label>Password</label>
+              <input type="password" name="password" required />
+            </div>
+
+            <button type="submit" class="btn-primary">Login Securely</button>
+          </form>
+
+          <p class="bottom-text">
+            Don’t have an account?
+            <a href="/register">Create one</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block content %}
+<h2>Inbox</h2>
+
+{% for email in emails %}
+<div class="card">
+  <p><strong>From:</strong> {{ email.sender }}</p>
+  <p><strong>Message:</strong></p>
+  <p style="background: #fff; padding: 10px; border-radius: 6px">
+    {{ email.message }}
+  </p>
+
+  {% if email.signature_valid %}
+  <span class="badge-valid">✔ Signature Valid</span>
+  {% else %}
+  <span class="badge-invalid">❌ Signature Invalid</span>
+  {% endif %}
+</div>
+{% endfor %} {% endblock %}

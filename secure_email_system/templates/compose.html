@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Compose | CipherMail</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/compose.css') }}"
+    />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="logo">🔐 <span>CipherMail</span></div>
+      <div class="user-actions">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout" class="logout-btn">Logout</a>
+      </div>
+    </header>
+
+    <div class="layout">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <ul>
+          <li><a href="/dashboard">🏠 Dashboard</a></li>
+          <li class="active">✉ Compose</li>
+          <li><a href="/inbox">📥 Inbox</a></li>
+        </ul>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="content">
+        <h1>Compose Secure Email</h1>
+        <p class="subtitle">
+          Your message will be encrypted using AES-256 and secured with RSA-2048
+          & Digital Signature.
+        </p>
+
+        <div class="compose-container">
+          <form method="POST" action="/send" class="compose-form">
+            <!-- Receiver -->
+            <label>Select Receiver</label>
+            <select name="receiver_id" required>
+              <option value="" disabled selected>Choose recipient</option>
+              {% for user in users %}
+              <option value="{{ user[0] }}">{{ user[1] }}</option>
+              {% endfor %}
+            </select>
+
+            <!-- Message -->
+            <label>Secure Message</label>
+            <textarea
+              name="message"
+              id="messageBox"
+              rows="8"
+              required
+              placeholder="Type your secure message here..."
+            ></textarea>
+
+            <div class="message-info">
+              <span id="charCount">0 characters</span>
+            </div>
+
+            <button type="submit" class="send-btn">
+              🔐 Encrypt & Send Securely
+            </button>
+          </form>
+
+          <!-- INFO PANEL -->
+          <div class="info-panel">
+            <h3>Encryption Process</h3>
+            <ul>
+              <li>1️⃣ SHA-512 Hash Generated</li>
+              <li>2️⃣ Digital Signature Created</li>
+              <li>3️⃣ AES-256 Encryption Applied</li>
+              <li>4️⃣ AES Key Encrypted via RSA</li>
+            </ul>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/compose.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Register | CipherMail</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/register.css') }}"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="logo">🔐 <span>CipherMail</span></div>
+
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/login" class="btn-outline">Login</a></li>
+      </ul>
+    </nav>
+
+    <!-- REGISTER SECTION -->
+    <section class="register-section">
+      <div class="register-container">
+        <div class="register-left">
+          <h2>Create Secure Account</h2>
+          <p>
+            Join CipherMail and experience secure communication powered by
+            RSA-2048, AES-256, SHA-512 and Digital Signatures.
+          </p>
+
+          <div class="security-highlights">
+            <div>🔑 Automatic RSA Key Generation</div>
+            <div>🛡 Message Integrity Verification</div>
+            <div>⚡ Hybrid Encryption Architecture</div>
+          </div>
+        </div>
+
+        <div class="register-card">
+          <h3>Create Account</h3>
+
+          {% if error %}
+          <div class="error-box">{{ error }}</div>
+          {% endif %} {% if message %}
+          <div class="success-box">{{ message }}</div>
+          {% endif %}
+
+          <form method="POST" action="/register">
+            <div class="input-group">
+              <label>Username</label>
+              <input type="text" name="username" required />
+            </div>
+
+            <div class="input-group">
+              <label>Email</label>
+              <input type="email" name="email" required />
+            </div>
+
+            <div class="input-group">
+              <label>Password</label>
+              <input type="password" name="password" id="password" required />
+              <div class="password-strength">
+                <div id="strength-bar"></div>
+              </div>
+              <small id="strength-text"></small>
+            </div>
+
+            <button type="submit" class="btn-primary">
+              Create Secure Account
+            </button>
+          </form>
+
+          <p class="bottom-text">
+            Already have an account?
+            <a href="/login">Login here</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/register.js') }}"></script>
+  </body>
+</html>

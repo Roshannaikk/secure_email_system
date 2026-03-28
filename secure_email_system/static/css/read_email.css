@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+/* TOPBAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 5%;
+  background: #111827;
+  border-bottom: 1px solid #1f2937;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #00f5d4;
+}
+
+.user-actions a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #e2e8f0;
+}
+
+.logout-btn {
+  padding: 8px 16px;
+  background: #ef4444;
+  border-radius: 6px;
+}
+
+/* LAYOUT */
+.layout {
+  display: flex;
+  min-height: calc(100vh - 70px);
+}
+
+.sidebar {
+  width: 220px;
+  background: #111827;
+  padding: 30px 20px;
+  border-right: 1px solid #1f2937;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin-bottom: 20px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #e2e8f0;
+}
+
+.sidebar .active {
+  color: #00f5d4;
+  font-weight: 600;
+}
+
+/* CONTENT */
+.content {
+  flex: 1;
+  padding: 40px 60px;
+}
+
+.subtitle {
+  color: #94a3b8;
+  margin-bottom: 30px;
+}
+
+/* SECURITY STATUS */
+.security-status {
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.security-status.valid {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+}
+
+.security-status.invalid {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+/* MESSAGE CARD */
+.message-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.message-header {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #1f2937;
+  padding-bottom: 15px;
+}
+
+.label {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.sender {
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.message-body {
+  white-space: pre-wrap;
+  font-size: 15px;
+}
+
+/* INFO PANEL */
+.info-panel {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.info-panel h3 {
+  margin-bottom: 15px;
+}
+
+.info-panel ul {
+  list-style: none;
+}
+
+.info-panel li {
+  margin-bottom: 10px;
+  color: #94a3b8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .sidebar {
+    display: none;
+  }
+
+  .content {
+    padding: 30px;
+  }
+}

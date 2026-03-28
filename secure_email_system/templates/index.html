@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CipherMail | Secure Email System</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="logo">🔐 <span>CipherMail</span></div>
+
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register" class="btn-primary">Get Started</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>
+          Secure Communication <br />
+          <span>Redefined with Hybrid Cryptography</span>
+        </h1>
+
+        <p>
+          CipherMail protects your emails using RSA, AES-256, SHA-512 hashing
+          and Digital Signatures — ensuring confidentiality, integrity, and
+          authentication.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="/register" class="btn-primary">Start Secure Messaging</a>
+          <a href="#features" class="btn-secondary">Learn More</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="floating-card">
+          <h3>🔐 End-to-End Encryption</h3>
+          <p>Hybrid AES + RSA protection</p>
+        </div>
+        <div class="floating-card delay">
+          <h3>🛡 Digital Signature</h3>
+          <p>Authenticity & Non-Repudiation</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section id="features" class="features">
+      <h2>Powerful Security Features</h2>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>🔑 RSA Encryption</h3>
+          <p>2048-bit asymmetric encryption ensures secure key exchange.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>⚡ AES-256</h3>
+          <p>Fast symmetric encryption for high-performance email security.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🔎 SHA-512 Hashing</h3>
+          <p>Advanced integrity protection to detect tampering instantly.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>✍ Digital Signatures</h3>
+          <p>Authenticate senders and prevent impersonation attacks.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2026 CipherMail | Secure Email System</p>
+    </footer>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+  </body>
+</html>

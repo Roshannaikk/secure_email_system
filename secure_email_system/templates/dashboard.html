@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard | CipherMail</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/dashboard.css') }}"
+    />
+  </head>
+  <body>
+    <!-- TOP NAVBAR -->
+    <header class="topbar">
+      <div class="logo">🔐 <span>CipherMail</span></div>
+
+      <div class="user-actions">
+        <span class="welcome-text">Welcome, {{ username }}</span>
+        <a href="/logout" class="logout-btn">Logout</a>
+      </div>
+    </header>
+
+    <!-- MAIN LAYOUT -->
+    <div class="dashboard-layout">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <ul>
+          <li class="active">🏠 Dashboard</li>
+          <li><a href="/compose">✉ Compose</a></li>
+          <li><a href="/inbox">📥 Inbox</a></li>
+        </ul>
+      </aside>
+
+      <!-- CONTENT AREA -->
+      <main class="content">
+        <section class="welcome-section">
+          <h1>Secure Communication Panel</h1>
+          <p>
+            Manage your encrypted emails and monitor cryptographic protection
+            powered by RSA-2048, AES-256 and SHA-512.
+          </p>
+        </section>
+
+        <!-- CRYPTO OVERVIEW CARDS -->
+        <section class="stats-grid">
+          <div class="stat-card">
+            <h3>🔑 RSA Encryption</h3>
+            <p>2048-bit asymmetric encryption active</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>⚡ AES-256</h3>
+            <p>High-speed symmetric encryption enabled</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>🔐 SHA-512 Hashing</h3>
+            <p>Integrity protection for every message</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>✍ Digital Signature</h3>
+            <p>Authenticity verification active</p>
+          </div>
+        </section>
+
+        <!-- QUICK ACTION -->
+        <section class="quick-actions">
+          <a href="/compose" class="action-btn primary">Compose Secure Email</a>
+          <a href="/inbox" class="action-btn secondary">Open Inbox</a>
+        </section>
+      </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+  </body>
+</html>

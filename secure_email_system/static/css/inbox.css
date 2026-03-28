@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+/* TOPBAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 5%;
+  background: #111827;
+  border-bottom: 1px solid #1f2937;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #00f5d4;
+}
+
+.user-actions a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #e2e8f0;
+}
+
+.logout-btn {
+  padding: 8px 16px;
+  background: #ef4444;
+  border-radius: 6px;
+}
+
+/* LAYOUT */
+.layout {
+  display: flex;
+  min-height: calc(100vh - 70px);
+}
+
+.sidebar {
+  width: 220px;
+  background: #111827;
+  padding: 30px 20px;
+  border-right: 1px solid #1f2937;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin-bottom: 20px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #e2e8f0;
+}
+
+.sidebar .active {
+  color: #00f5d4;
+  font-weight: 600;
+}
+
+/* CONTENT */
+.content {
+  flex: 1;
+  padding: 40px 60px;
+}
+
+.subtitle {
+  color: #94a3b8;
+  margin-bottom: 40px;
+}
+
+/* EMAIL LIST */
+.email-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.email-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.email-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 245, 212, 0.15);
+}
+
+.email-info h3 {
+  margin-bottom: 5px;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.view-btn {
+  padding: 10px 18px;
+  background: linear-gradient(45deg, #00f5d4, #3b82f6);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* EMPTY STATE */
+.empty-state {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.empty-state h2 {
+  margin-bottom: 15px;
+}
+
+.empty-state p {
+  color: #94a3b8;
+  margin-bottom: 25px;
+}
+
+.compose-btn {
+  padding: 12px 22px;
+  background: linear-gradient(45deg, #00f5d4, #3b82f6);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .sidebar {
+    display: none;
+  }
+
+  .content {
+    padding: 30px;
+  }
+}
