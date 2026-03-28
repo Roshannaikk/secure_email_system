@@ -1,1 +1,90 @@
 # secure_email_system
+CREATE DATABASE secure_email_system;
+USE secure_email_system;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    
+    is_active BOOLEAN DEFAULT TRUE,
+    is_verified BOOLEAN DEFAULT TRUE,
+    
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE user_keys (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    
+    user_id INT NOT NULL,
+    
+    public_key TEXT NOT NULL,
+    private_key_path VARCHAR(255) NOT NULL,
+    
+    algorithm VARCHAR(20) DEFAULT 'RSA',
+    key_size INT DEFAULT 2048,
+    
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE login_activity (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    
+    user_id INT NOT NULL,
+    
+    login_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ip_address VARCHAR(45),
+    login_status ENUM('SUCCESS', 'FAILED') NOT NULL,
+    
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE emails (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    
+    sender_id INT NOT NULL,
+    receiver_id INT NOT NULL,
+    
+    encrypted_message LONGTEXT NOT NULL,
+    encrypted_aes_key TEXT NOT NULL,
+    digital_signature TEXT NOT NULL,
+    
+    verification_status ENUM('PENDING', 'VALID', 'TAMPERED') DEFAULT 'PENDING',
+    
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (sender_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (receiver_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE email_security_metadata (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    
+    email_id INT NOT NULL,
+    
+    message_hash VARCHAR(128) NOT NULL,
+    hash_algorithm VARCHAR(20) DEFAULT 'SHA-512',
+    encryption_algorithm VARCHAR(20) DEFAULT 'AES-256',
+    signature_algorithm VARCHAR(20) DEFAULT 'RSA',
+    
+    verified_at TIMESTAMP NULL,
+    
+    FOREIGN KEY (email_id) REFERENCES emails(id) ON DELETE CASCADE
+);
+
+USE secure_email_system;
+
+SELECT id, encrypted_message, digital_signature 
+FROM emails;
+
+UPDATE emails
+SET encrypted_message = 'changing the content with email' 
+WHERE id = 3;
+
+In Terminal and install pip 
+pip install flask flask-mysqldb pycryptodome bcrypt
